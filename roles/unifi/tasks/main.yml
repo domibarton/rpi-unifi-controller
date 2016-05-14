@@ -1,0 +1,45 @@
+---
+- name: configure apt key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: C0A52C50
+  tags: unifi
+
+- name: configure apt repository
+  apt_repository:
+    repo: deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
+    update_cache: yes
+  tags: unifi
+
+- name: ensure unifi is installed
+  apt:
+    name: unifi
+    state: present
+  tags: unifi
+
+- name: configure unifi service unit
+  template:
+    src: unifi.service.j2
+    dest: /etc/systemd/system/unifi.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd daemon
+    - restart unifi
+  tags: unifi
+
+- name: configure unifi memory limit
+  lineinfile:
+    dest: /usr/lib/unifi/bin/unifi.init
+    regexp: JVM_MAX_HEAP_SIZE=
+    line: 'JVM_MAX_HEAP_SIZE={{ unifi_memory_limit }}'
+  notify: restart unifi
+  tags: unifi
+
+- name: ensure unifi is started
+  service:
+    name: unifi
+    state: started
+    enabled: yes
+  tags: unifi

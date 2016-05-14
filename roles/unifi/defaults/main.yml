@@ -1,0 +1,5 @@
+# Path to the java home directory.
+unifi_java_home: /usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt
+
+# Memory limit for the java process.
+unifi_memory_limit: '{{ ansible_memtotal_mb - 128 }}M'

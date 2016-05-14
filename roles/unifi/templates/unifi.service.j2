@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+
+[Unit]
+Description=unifi
+After=local-fs.target remote-fs.target network-online.target
+Wants=network-online.target
+Conflicts=shutdown.target
+
+[Service]
+Type=forking
+TimeoutSec=5min
+IgnoreSIGPIPE=no
+KillMode=process
+RemainAfterExit=yes
+ExecStart=/usr/lib/unifi/bin/unifi.init start
+ExecStop=/usr/lib/unifi/bin/unifi.init stop
+ExecReload=/usr/lib/unifi/bin/unifi.init reload
+Environment=JAVA_HOME={{ unifi_java_home }}
+
+[Install]
+WantedBy=multi-user.target

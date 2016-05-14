@@ -1,0 +1,6 @@
+---
+- name: make sure java is installed
+  apt:
+    name: oracle-java8-jdk
+    state: present
+  tags: java8
