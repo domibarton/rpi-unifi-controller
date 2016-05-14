@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Update package cache.
-sudo apt-get -y update
-
 # Install required packages for ansible.
 sudo apt-get -y install python-pip python-dev
 
