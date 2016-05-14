@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Install required packages for ansible.
 sudo apt-get -y install python-pip python-dev
