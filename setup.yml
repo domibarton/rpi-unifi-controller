@@ -1,5 +1,0 @@
----
-- name: setup UniFi controller
-  hosts: all
-  roles:
-    - unifi

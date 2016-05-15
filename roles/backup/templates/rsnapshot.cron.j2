@@ -1,0 +1,6 @@
+# {{ ansible_managed }}
+0  *    * * *       root    /usr/bin/rsnapshot hourly
+45 4    * * *       root    /usr/bin/rsnapshot daily
+50 4    * * 1       root    /usr/bin/rsnapshot weekly
+55 4    1 * *       root    /usr/bin/rsnapshot monthly
+

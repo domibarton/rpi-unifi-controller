@@ -1,0 +1,12 @@
+---
+- name: make sure pip is installed
+  apt:
+    name: python-pip
+    state: present
+  register: result
+  tags: pip
+
+- name: update pip
+  command: easy_install -U pip
+  when: pip_update or result.changed
+  tags: pip

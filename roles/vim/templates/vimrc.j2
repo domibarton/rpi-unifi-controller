@@ -1,0 +1,36 @@
+" {{ ansible_managed }}
+
+" Use 256 colours (Use this setting only if your terminal supports 256 colours)
+set t_Co=256
+
+" enable syntax
+syntax enable
+
+" use spaces instead of tabs
+set expandtab ts=4 sw=4
+
+" enable modlines in the first 10 lines of a file
+set modeline modelines=10
+
+" map \m to add a modeline
+map <Leader>m <Bar>
+    \ :let modeline = printf(" vim: set expandtab ts=%d sw=%d tw=%d :",
+    \ &tabstop, &shiftwidth, &textwidth) <Bar>
+    \ :let modeline = substitute(&commentstring, "%s", modeline, "")  <CR> <Bar>
+    \ :call append(1, modeline) <CR>
+
+" map \s to toggle syntax
+map <Leader>s :if exists("syntax_on") <Bar>
+    \ syntax off <Bar>
+    \ else <Bar>
+    \ syntax enable <Bar>
+    \ endif<CR>
+
+" map \l to toggle line numbers
+nnoremap <Leader>l :set nonu!<CR>
+
+" map \t to toggle tabbing
+nnoremap <Leader>t :set noexpandtab!<CR>
+
+" map \p to toggle paste mode
+nnoremap <Leader>p :set nopaste!<CR>

@@ -1,0 +1,28 @@
+---
+- name: ensure nfs is installed
+  apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - nfs-kernel-server
+    - portmap
+  tags: backup
+
+- name: ensure nfs is started
+  service:
+    name: '{{ item }}'
+    state: started
+    enabled: yes
+  with_items:
+    - nfs-kernel-server
+    - rpcbind
+  tags: backup
+
+- name: mount NFS share
+  mount:
+    name: '{{ backup_nfs_mount }}'
+    src: '{{ backup_nfs_share }}'
+    fstype: nfs
+    opts: rsize=8192,wsize=8192,timeo=30,soft,intr
+    state: mounted
+  tags: backup

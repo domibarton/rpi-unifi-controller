@@ -1,0 +1,10 @@
+---
+- name: update system
+  hosts: all
+  roles:
+    - role: apt
+      apt_update_cache: True
+      apt_update_packages: True
+    - role: pip
+      pip_update: True
+  gather_facts: no

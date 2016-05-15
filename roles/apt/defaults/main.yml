@@ -1,0 +1,3 @@
+---
+apt_update_cache:    False
+apt_update_packages: False

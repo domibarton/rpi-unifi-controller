@@ -1,0 +1,6 @@
+---
+- name: disable IPv6
+  hosts: all
+  roles:
+    - vim
+  gather_facts: no

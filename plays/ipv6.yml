@@ -1,0 +1,6 @@
+---
+- name: disable IPv6
+  hosts: all
+  roles:
+    - ipv6
+  gather_facts: no

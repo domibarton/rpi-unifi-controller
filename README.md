@@ -1,7 +1,7 @@
 Purpose
 =======
 
-This is an Ansible-based project to setup an [UniFi Controller](https://www.ubnt.com/download/unifi) on a [Raspberry Pi](https://www.raspberrypi.org/) / [Raspbian](https://www.raspbian.org/).
+This is an Ansible-based project to setup an [UniFi Controller](https://www.ubnt.com/download/unifi) on a [Raspberry Pi](https://www.raspberrypi.org/) / [Raspbian](https://www.raspbian.org/) with backup and all the shizzle.
 
 Setup
 =====
@@ -38,5 +38,14 @@ Now you should be ready to run the setup script:
 In case you've already installed ansible and updated the apt cache, you can also simply run the Ansible playbook to save some time:
 
 ```bash
-ansible-playbook setup.yml -c local
+ansible-playbook plays/setup_all.yml -c local
+```
+
+Update
+======
+
+To update the system you can easily run the update playbook:
+
+```bash
+ansible-playbook plays/update.yml -c local
 ```

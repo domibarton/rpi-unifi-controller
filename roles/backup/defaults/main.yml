@@ -1,0 +1,20 @@
+---
+# Backup Directory.
+backup_directory: '/mnt/backup'
+
+# Backup NFS share.
+backup_nfs_share: ''
+backup_nfs_mount: '{{ backup_directory }}'
+
+# Backup retain counter.
+backup_retain_hourly: 24
+backup_retain_daily: 7
+backup_retain_weekly: 4
+backup_retain_monthly: 12
+
+# List of backup directories (trailing slash required).
+backup_list:
+  - /home/
+  - /etc/
+  - /usr/local/
+  - /var/lib/unifi/

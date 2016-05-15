@@ -1,0 +1,5 @@
+---
+- name: setup and configure backup
+  hosts: all
+  roles:
+    - backup

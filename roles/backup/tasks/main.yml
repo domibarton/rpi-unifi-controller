@@ -1,0 +1,27 @@
+---
+- include: nfs.yml
+  when: backup_nfs_share is defined
+
+- name: ensure rsnapshot is installed
+  apt:
+    name: rsnapshot
+    state: present
+  tags: backup
+
+- name: configure rsnapshot
+  template:
+    src: rsnapshot.conf.j2
+    dest: /etc/rsnapshot.conf
+    owner: root
+    group: root
+    mode: 0644
+  tags: backup
+
+- name: configure cronjob
+  template:
+    src: rsnapshot.cron.j2
+    dest: /etc/cron.d/rsnapshot
+    owner: root
+    group: root
+    mode: 0644
+  tags: backup

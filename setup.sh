@@ -8,4 +8,4 @@ sudo apt-get -y install python-pip python-dev
 sudo pip install ansible markupsafe
 
 # Install UniFi controller via Ansible.
-ansible-playbook setup.yml -c local
+ansible-playbook plays/setup_all.yml -c local

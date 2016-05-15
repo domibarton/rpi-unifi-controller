@@ -1,0 +1,12 @@
+---
+- name: update apt cache
+  apt:
+    update_cache: yes
+  when: apt_update_cache
+  tags: apt
+
+- name: update packages
+  apt:
+    upgrade: dist
+  when: apt_update_packages
+  tags: apt

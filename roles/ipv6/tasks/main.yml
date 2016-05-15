@@ -1,0 +1,12 @@
+---
+- name: disable ipv6
+  sysctl:
+    name: 'net.ipv6.conf.{{ item }}.disable_ipv6'
+    value: 1
+    state: present
+  when: ipv6_disable
+  with_items:
+    - all
+    - default
+    - lo
+  tags: ipv6

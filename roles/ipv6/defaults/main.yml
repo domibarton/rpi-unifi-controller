@@ -1,0 +1,2 @@
+# Disable IPv6.
+ipv6_disable: yes
